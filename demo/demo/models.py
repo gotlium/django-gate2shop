@@ -4,7 +4,9 @@ from pprint import pprint
 
 
 def transaction_result(sender, **kwargs):
-    pprint(model_to_dict(sender))
+    if sender.Status == 'APPROVED':
+        pprint(model_to_dict(sender))
 
 
-g2s_signal.connect(transaction_result, dispatch_uid="demo.models.G2SSignal")
+g2s_signal.connect(
+    transaction_result, dispatch_uid="demo.models.transaction_result")
