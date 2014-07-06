@@ -52,7 +52,7 @@ class G2STransaction(models.Model):
     nameOnCard = models.CharField(max_length=100)
     uniqueCC = models.CharField(max_length=255)
 
-    def validate_response_checksum(self):
+    def _validate_response_checksum(self):
         fields = [
             defaults.SECRET_KEY, self.totalAmount, defaults.CURRENCY,
             self.responseTimeStamp.strftime('%Y-%m-%d.%H:%M:%S'),
@@ -63,17 +63,22 @@ class G2STransaction(models.Model):
         if m.hexdigest() != self.advanceResponseChecksum:
             raise ValidationError('Error')
 
+    def _send_signal(self):
+        if self.Status == 'APPROVED':
+            signals.g2s_payment_was_successful.send(sender=self)
+        signals.g2s_signal.send(sender=self)
+
     def clean(self):
-        self.validate_response_checksum()
+        self._validate_response_checksum()
 
     def save(self, *args, **kwargs):
         transaction_is_exists = self._default_manager.filter(
             TransactionID=self.TransactionID).exists()
 
         if not transaction_is_exists:
-            signals.g2s_signal.send(sender=self)
-            return super(G2STransaction, self).save(*args, **kwargs)
-        raise Exception
+            super(G2STransaction, self).save(*args, **kwargs)
+            return self._send_signal()
+        return False
 
     def __unicode__(self):
         return str(self.PPP_TransactionID)

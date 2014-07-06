@@ -25,10 +25,4 @@ shell:
 	cd demo && python manage.py shell
 
 run:
-	cd demo && python manage.py runserver_plus
-
-run_celery:
-	cd demo && python manage.py celeryd -v 2 -B -s celery -E -l INFO
-
-run_shell:
-	cd demo && python manage.py shell_plus --print-sql
+	cd demo && python manage.py runserver
