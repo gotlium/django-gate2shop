@@ -1,0 +1,6 @@
+include README.rst
+include LICENSE
+include AUTHORS.rst
+include requirements/*
+recursive-exclude * .DS_Store
+recursive-include g2s *.html *.png *.gif *js *.css *jpg *jpeg *svg *py *.txt *.po
