@@ -38,6 +38,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'south',
+
     'g2s',
     'demo',
 )
@@ -88,9 +90,9 @@ STATIC_URL = '/static/'
 
 # Your G2S configuration
 G2S_MERCHANT_ID = ''
+G2S_SECRET_KEY = ''
 G2S_MERCHANT_SITE_ID = ''
 G2S_CURRENCY = 'USD'
-G2S_SECRET_KEY = ''
 
 
 try:
