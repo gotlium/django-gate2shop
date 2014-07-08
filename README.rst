@@ -118,8 +118,7 @@ Demo installation:
     $ python setup.py develop
     $ cd demo
     $ pip install -r requirements.txt
-    $ python manage.py syncdb --noinput
-    $ python manage.py migrate
+    $ python manage.py syncdb --noinput && python manage.py migrate --noinput
     $ python manage.py runserver >& /tmp/runserver.log &
     $ xdg-open http://127.0.0.1:8000/g2s/
 
