@@ -23,7 +23,9 @@ def g2s_index(request):
         'email': 'ivanov.ivan@yandex.ru',
         'phone1': '+79031234567',
         'total_amount': 1.11,
-        'user_token_id': 1,
+        'user_token_id': request.user.pk,
+        # all available methods on http://www.g2s.com/world-wide-payments/
+        'payment_method': 'cc_card', # cc_card, dc_card, giro
         'productId': 1,
     }
 
