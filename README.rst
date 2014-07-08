@@ -105,4 +105,24 @@ You can use it to process your own actions (add amount to users account, etc..)
 
 
 
+Demo installation:
+------------------
+
+.. code-block:: bash
+
+    $ pip install virtualenvwrapper
+    $ source /usr/local/bin/virtualenvwrapper.sh
+    $ mkvirtualenv django-gate2shop
+    $ git clone https://github.com/gotlium/django-gate2shop.git
+    $ cd django-gate2shop
+    $ python setup.py develop
+    $ cd demo
+    $ pip install -r requirements.txt
+    $ python manage.py syncdb --noinput
+    $ python manage.py migrate
+    $ python manage.py runserver >& /tmp/runserver.log &
+    $ xdg-open http://127.0.0.1:8000/g2s/
+
+
+
 Full Gateway Specification available at: http://www.g2s.com/documentation/
