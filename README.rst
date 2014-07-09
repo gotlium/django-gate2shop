@@ -123,5 +123,4 @@ Demo installation:
     $ xdg-open http://127.0.0.1:8000/g2s/
 
 
-
 Full Gateway Specification available at: http://www.g2s.com/documentation/
