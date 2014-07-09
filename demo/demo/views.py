@@ -34,6 +34,7 @@ def g2s_index(request):
 
 
 def g2s_success(request):
+    '''
     try:
         form = G2STransactionForm(request.GET)
         if form.is_valid() and form.save():
@@ -41,7 +42,8 @@ def g2s_success(request):
     except Exception, msg:
         print '[g2s]', msg.__str__()
     return HttpResponse('Error')
-
+    '''
+    return HttpResponse("Success")
 
 def g2s_pending(request):
     return HttpResponse("Pending")
