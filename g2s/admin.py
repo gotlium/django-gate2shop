@@ -7,6 +7,13 @@ from g2s.models import G2STransaction
 
 class G2STransactionAdmin(admin.ModelAdmin):
 
+    list_display = [
+        'TransactionID', 'first_name', 'last_name', 'totalAmount',
+        'currency', 'payment_method', 'Status',
+    ]
+    date_hierarchy = 'responseTimeStamp'
+    list_filter = ['responseTimeStamp']
+
     def __init__(self, model, admin_site):
         super(G2STransactionAdmin, self).__init__(model, admin_site)
 
