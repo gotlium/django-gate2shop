@@ -9,6 +9,7 @@ def save_g2s_transaction(request):
         form = G2STransactionForm(request.GET)
         if form.is_valid() and form.save():
             return HttpResponse("OK")
+        print'[g2s]', dict(form.errors)
     except Exception, msg:
         print '[g2s]', msg.__str__()
     return HttpResponseForbidden()
