@@ -70,7 +70,8 @@ class G2SForm(forms.Form):
         m = md5()
         m.update(
             defaults.SECRET_KEY + defaults.MERCHANT_ID +
-            defaults.CURRENCY + str(self.initial['total_amount']) + items +
+            str(self.initial['currency']) +
+            str(self.initial['total_amount']) + items +
             str(self.initial['user_token_id']) +
             self.fields['time_stamp'].initial
         )

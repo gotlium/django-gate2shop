@@ -54,7 +54,7 @@ class G2STransaction(models.Model):
 
     def _validate_response_checksum(self):
         fields = [
-            defaults.SECRET_KEY, self.totalAmount, defaults.CURRENCY,
+            defaults.SECRET_KEY, self.totalAmount, self.currency,
             self.responseTimeStamp.strftime('%Y-%m-%d.%H:%M:%S'),
             self.PPP_TransactionID, self.Status, self.productId or ''
         ]
