@@ -13,6 +13,10 @@ class G2STransactionAdmin(admin.ModelAdmin):
     ]
     date_hierarchy = 'responseTimeStamp'
     list_filter = ['responseTimeStamp']
+    search_fields = [
+        'TransactionID', 'first_name', 'last_name',
+        'totalAmount', 'PPP_TransactionID', 'payment_method'
+    ]
 
     def __init__(self, model, admin_site):
         super(G2STransactionAdmin, self).__init__(model, admin_site)
